@@ -5,3 +5,12 @@ services:
 script:
     - docker build -t cynthiaxhe/node .
     - docker images cynthiaxhe/node
+
+before_deploy:
+    - docker login -u cynthiaxhe -p syNagGivjpgKnDi1Z
+
+deploy:
+    provider: script
+    script: docker push cynthiaxhe/node
+    on:
+        branch: master
